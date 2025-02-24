@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApexPlanet</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; }
+        header { background: #333; color: white; padding: 20px; font-size: 2em; }
+        .container { max-width: 800px; margin: 20px auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { color: #333; margin-bottom: 10px; }
+        button { background: #28a745; color: white; padding: 10px 20px; border: none; cursor: pointer; margin-top: 10px; }
+        button:hover { background: #218838; }
+        
+        #quiz-question { color: #007BFF; font-size: 1.2em; }
+        #quiz-result { font-weight: bold; color: #DC3545; }
+        #quiz-options button { display: block; margin: 5px auto; }
+        
+        @media (max-width: 600px) {
+            body { font-size: 14px; }
+            .container { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <header>Advanced Web Development Task-3</header>
+    <div class="container">
+        <h2>Interactive Quiz</h2>
+        <p id="quiz-question"></p>
+        <div id="quiz-options"></div>
+        <p id="quiz-result"></p>
+        <br>
+        <button onclick="prevQuestion()">Previous</button>
+        <button onclick="nextQuestion()">Next</button>
+    </div>
+    
+    <div class="container">
+        <h2>Image Carousel</h2>
+        <img id="carousel" src="https://via.placeholder.com/400" width="100%" alt="Carousel Image">
+        <br><br>
+        <button onclick="prevImage()">Previous</button>
+        <button onclick="nextImage()">Next</button>
+    </div>
+    
+    <div class="container">
+        <h2>Live Weather Data</h2>
+        <input type="text" id="city" placeholder="Enter city name">
+        <button onclick="fetchWeather()">Get Weather</button>
+        <p id="weather-result"></p>
+    </div>
+
+    <script>
+        const API_KEY = 'd8673ae537ecc5cc2fe61f794bfe3ef6';
+        
+        // Quiz Functionality
+        const quizData = [
+            { question: "Which is the largest rainforest in the world?", options: ["Congo Rainforest", "Amazon Rainforest", "Daintree Rainforest"], answer: "Amazon Rainforest" },
+            { question: "Which is the tallest mountain in the world?", options: ["K2", "Mount Everest", "Kangchenjunga"], answer: "Mount Everest" },
+            { question: "What is the largest ocean on Earth?", options: ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean"], answer: "Pacific Ocean" },
+            { question: "Which country is famous for its cherry blossoms?", options: ["China", "Japan", "South Korea"], answer: "Japan" },
+            { question: "Which continent has the most countries?", options: ["Europe", "Africa", "Asia"], answer: "Africa" }
+        ];
+        let currentQuestionIndex = 0;
+        function loadQuestion() {
+            const quizQuestion = document.getElementById("quiz-question");
+            const quizOptions = document.getElementById("quiz-options");
+            const result = document.getElementById("quiz-result");
+            if (currentQuestionIndex < quizData.length) {
+                quizQuestion.innerHTML = quizData[currentQuestionIndex].question;
+                quizOptions.innerHTML = quizData[currentQuestionIndex].options.map(option => `<button onclick="checkAnswer('${option}')">${option}</button>`).join(" ");
+                result.innerHTML = "";
+            } else {
+                quizQuestion.innerHTML = "All questions are completed!";
+                quizOptions.innerHTML = "";
+            }
+        }
+        function checkAnswer(answer) {
+            const result = document.getElementById("quiz-result");
+            if (answer === quizData[currentQuestionIndex].answer) {
+                result.innerHTML = "✅ Correct!";
+            } else {
+                result.innerHTML = "❌ Wrong answer, try again!";
+            }
+        }
+        function nextQuestion() {
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                document.getElementById("quiz-question").innerHTML = "All questions are completed!";
+                document.getElementById("quiz-options").innerHTML = "";
+            }
+        }
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+        loadQuestion();
+        
+        // Image Carousel Functionality
+        const images = [ 
+            "https://pixabay.com/photos/mountain-winter-island-sea-9422557/", 
+            "https://cdn.pixabay.com/photo/2025/02/20/15/23/altocumulus-clouds-9420008_1280.jpg", 
+            "https://cdn.pixabay.com/photo/2025/02/14/03/08/butterfly-9405640_1280.jpg",
+            "https://cdn.pixabay.com/photo/2025/02/21/09/49/ai-generated-9421634_1280.jpg",
+            "https://cdn.pixabay.com/photo/2025/02/21/16/51/poppies-9422556_1280.jpg", 
+            "https://cdn.pixabay.com/photo/2025/02/19/17/31/landscape-9418204_1280.jpg",
+            "https://cdn.pixabay.com/photo/2025/02/22/07/52/landscape-9423725_1280.jpg", 
+            "https://cdn.pixabay.com/photo/2025/02/19/17/31/landscape-9418205_1280.jpg", 
+            "https://cdn.pixabay.com/photo/2025/02/19/06/17/winter-9416919_1280.jpg", 
+    ]
+        let index = 0;
+        function nextImage() {
+            index = (index + 1) % images.length;
+            document.getElementById("carousel").src = images[index];
+        }
+        function prevImage() {
+            index = (index - 1 + images.length) % images.length;
+            document.getElementById("carousel").src = images[index];
+        }
+        
+        // Fetch Weather API Example
+        async function fetchWeather() {
+            const city = document.getElementById("city").value;
+            if (!city) {
+                document.getElementById("weather-result").innerHTML = "Please enter a city name.";
+                return;
+            }
+            try {
+                let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+                let data = await response.json();
+                document.getElementById("weather-result").innerHTML = `🌡️ Temperature in ${city}: ${data.main.temp}°C`;
+            } catch (error) {
+                document.getElementById("weather-result").innerHTML = "Error fetching weather data.";
+            }
+        }
+    </script>
+</body>
+</html>

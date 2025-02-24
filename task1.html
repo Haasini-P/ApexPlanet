@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ApexPlanet Task-1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            text-align: left;
+        }
+
+        header {
+            background: #ff6347;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        nav {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #ff6347;
+            font-size: 1.2em;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff4500;
+        }
+
+        section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #ff7f50; 
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p, li {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: square;
+            margin-left: 40px;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        footer {
+            margin-top: 50px;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #ff6347;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Extensive Learning Page!</h1>
+        <p>Your ultimate resource to dive into HTML, CSS, JavaScript, and more!</p>
+    </header>
+    <nav>
+        <a href="#section1">Introduction</a>
+        <a href="#section2">HTML Basics</a>
+        <a href="#section3">CSS Styling</a>
+        <a href="#section4">JavaScript Fun</a>
+        <a href="#section5">External Links</a>
+        <a href="#section6">Conclusion</a>
+    </nav>
+
+    <!-- Section 1: Introduction -->
+    <section id="section1" class="content-section">
+        <h2>Introduction to Web Development</h2>
+        <p>Web development is the process of building websites and web applications. The core technologies involved in web development are HTML, CSS, and JavaScript. Each of these technologies serves a different purpose:</p>
+        <ul>
+            <li><strong>HTML (HyperText Markup Language):</strong> Provides the structure of the webpage.</li>
+            <li><strong>CSS (Cascading Style Sheets):</strong> Defines the visual style and layout of the page.</li>
+            <li><strong>JavaScript:</strong> Adds interactivity and dynamic content to the page.</li>
+        </ul>
+        <p>Web development can be fun and rewarding, and mastering these foundational skills is the first step toward becoming a full-stack developer.</p>
+    </section>
+
+    <!-- Section 2: HTML Basics -->
+    <section id="section2" class="content-section">
+        <h2>Understanding HTML</h2>
+        <p>HTML (HyperText Markup Language) is the standard language used to create and structure content on the web.
+            HTML is the backbone of any webpage. It consists of various elements and tags that define the structure and content of the page.</p>
+        <p>Example of a basic HTML structure:</p>
+        <pre>
+            <code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Hello World!&lt;/h1&gt;
+        &lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </code>
+        </pre>
+    </section>
+
+    <!-- Section 3: CSS Styling -->
+    <section id="section3" class="content-section">
+        <h2>Adding Style with CSS</h2>
+        <p> 
+        CSS(Cascading Styling Sheets) is the design layer of a webpage. It controls the visual appearance, layout, and styling of HTML elements. 
+        Developers use CSS to customize colors, fonts, spacing, and even animations to make websites visually appealing and user-friendly. 
+        CSS is used to style the content created with HTML. It controls the look and feel of a webpage.
+        Here's an example:</p>
+        <pre>
+            <code>
+body {
+    background-color: #f0f8ff;
+}
+
+h1 {
+    color: #ff6347;
+    font-size: 3em;
+}
+            </code>
+        </pre>
+        <p>CSS can change colors, fonts, layout, and much more. Its a crucial part of creating an aesthetically pleasing web page.</p>
+        <p>Here is an example of a styled heading:</p>
+        <h1 style="color: #ff6347;">This is a Styled Heading!</h1>
+    </section>
+
+    <!-- Section 4: JavaScript Fun -->
+    <section id="section4" class="content-section">
+        <h2>Making the Web Interactive with JavaScript</h2>
+        <p> JavaScript is the brain of a webpage. It is a programming language used to add interactivity and dynamic behavior to websites. 
+            With JavaScript, you can create features like drop-down menus, image sliders, form validations, and more. It runs directly in the browser.
+            JavaScript adds interactivity to the web.
+        </p>
+        <button onclick="showAlert()">Click Me for a JavaScript Alert!</button>
+
+        <script>
+            function showAlert() {
+                alert("🎉 You've triggered a JavaScript function! 🎉");
+            }
+        </script>
+    </section>
+
+    <!-- Section 5: External Links -->
+    <section id="section5" class="content-section">
+        <h2>Helpful External Links for Further Learning</h2>
+        <p>Here are some fantastic resources to continue learning about web development:</p>
+        <ul>
+            <li><a href="https://www.w3schools.com" target="_blank">W3Schools: Web Development Tutorials</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web" target="_blank">MDN Web Docs</a></li>
+            <li><a href="https://www.freecodecamp.org" target="_blank">freeCodeCamp: Learn Web Development for Free</a></li>
+            <li><a href="https://www.codecademy.com" target="_blank">Codecademy: Interactive Coding Courses</a></li>
+        </ul>
+    </section>
+
+    <!-- Section 6: Conclusion -->
+    <section id="section6" class="content-section">
+        <h2>Conclusion</h2>
+        <p>Congratulations on exploring the basics of web development! Whether you're building a simple webpage or a complex web application, HTML, CSS, and JavaScript are the core building blocks that you'll need. Keep practicing, experimenting, and exploring the vast world of web development!</p>
+        <p>Remember, learning to code is a journey. Stay curious and keep building!</p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Learning Web Development | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
